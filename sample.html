@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+<div class="banner">FORMS</div>
+<div class="tab">
+    <button class="tablinks">Computer Science</button>
+    <button class="tablinks">Software Engineering</button>
+    <button class="tablinks">Computer Engineering</button>
+    <button class="tablinks">Computer Science</button>
+    <button class="tablinks">Software Engineering</button>
+    <button class="tablinks">Computer Engineering</button>
+    <button class="tablinks">Computer Science</button>
+    <button class="tablinks">Software Engineering</button>
+    <button class="tablinks">Computer Engineering</button>
+    <button class="tablinks">Computer Science</button>
+    <button class="tablinks">Software Engineering</button>
+    <button class="tablinks">Computer Engineering</button>
+  </div>
+
+<div class="divv">
+    <h1>Data Entry</h1> 
+    <form >
+        <label for="fname">First name: </label>
+        <input type="text" id="fname" name="fname" ><br><br>
+        <label for="lname">Last name: </label>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label for="year">Year Of Graduation: </label><br>
+        <input type="radio" id="html" name="year" value="HTML">
+        <label for="2023">2023</label><br>
+        <input type="radio" id="css" name="year" value="CSS">
+        <label for="2024">2024</label><br>
+        <input type="radio" id="javascript" name="year" value="JavaScript">
+        <label for="2025">2025</label><br>
+        <input type="submit" value="Submit" onclick=fun()>
+      </form> 
+<script>
+    function fun() {
+        alert("You Submitted Data Successfully :)");
+    }
+</script>
+</div>
+<br>
+<br>
+<div >
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Semester</th>
+            <th>Grade</th>
+        </tr>
+        <tr>
+            <td>OOP</td>
+            <td>Second</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>DSA</td>
+            <td>Third</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>IDS</td>
+            <td>Fifth</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>DBS</td>
+            <td>Third</td>
+            <td>A</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

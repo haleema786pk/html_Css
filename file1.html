@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FirstPage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="function.js"></script>
+
+    </head>
+<body>
+
+<h2>What Can JavaScript Do?</h2>
+
+<p id="demo">JavaScript can change HTML content.</p>
+
+<button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
+
+
+
+<h2>This is my second paragraph</h2>
+<p id="para1">This is some paragraph and content after this is changed.</p>
+<button type="button" onclick='document.getElementById("para1").innerHTML="This is after button is clicked"'>Change</button>
+<button type="button" onclick='document.getElementById("para1").innerHTML="This is some paragraph and content after this is changed."'>Undo</button>
+<br>
+
+
+<button type="button" onclick=myFun2()>UP</button>
+<img id="img" src="up.jpg" style="width: 100px;" usemap="#de">
+<button type="button" onclick=myFun()>Down</button>
+
+<p id="demo1">This is some thing</p>
+
+<map name="de">
+    <area shape="circle" coords="20,20,50" alt="some thing" title="something" >
+</map>
+
+<script>
+let name=["haleema","sadia","minahil","merab"];
+let txt=`<h2>List of Names</h2><ul>`;
+name.forEach(element => {
+    txt+=`<li>${element}</li>`;
+});
+txt+=`</ul>`;
+document.getElementById('demo1').innerHTML=txt;
+</script>
+</body>
+</html>
