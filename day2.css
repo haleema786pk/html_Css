@@ -1,0 +1,214 @@
+.boxModel{
+    text-align: center;
+    border-style: solid;
+    border-width: thick;
+    border-color: blanchedalmond;
+    font-size: xx-large;
+    padding: 20px;
+    margin: 50px;
+    background-color: rgb(161, 211, 212);
+    outline: 20px;
+    outline-style: solid;
+    outline-color: cornflowerblue;
+    outline-offset: 5px;
+    color: rgb(48, 87, 88);
+
+    
+}
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.txtAlign{
+    text-indent: 15px;
+    text-align: justify;
+    text-align-last: justify;
+    letter-spacing: -1px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.topic{
+    border: 1px solid lightgray;
+    padding: 5px;
+    background-color: cornsilk;
+}
+img.a{
+    vertical-align:middle;
+}
+.txtDeco{
+    text-decoration: dotted line-through crimson;
+    text-transform: capitalize;
+}
+.txtEffects{
+    text-shadow:  1px 1px 2px white, 0 0 25px blue, 0 0 5px darkblue;
+    background-color: black;
+    color: white;
+    font-size: xx-large;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+}
+
+.p1 {
+    font-family: "Times New Roman", Times, serif;
+  }
+  
+  .p2 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .p3 {
+    font-family: "Lucida Console", "Courier New", monospace;
+  }
+a.btn1:link , a.btn1:visited{
+    padding: 5px;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border-color: white;
+    border-radius: 4px;
+}
+a.btn1:hover{
+    background-color: rgba(255, 0, 0, 0.74);
+}
+a.btn2:link , a.btn2:visited{
+    padding: 5px;
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    border-color: black;
+    border-width: thin;
+    margin: 10px;
+}
+a.btn2:hover{
+    background-color: yellow;
+}
+ol {
+    background: #ff9999;
+    padding: 20px;
+  }
+  
+  ul {
+    background: #3399ff;
+    padding: 20px;
+  }
+  
+  ol li {
+    background: #ffe5e5;
+    color: darkred;
+    padding: 5px;
+    margin-left: 35px;
+  }
+  
+  ul li {
+    background: #cce5ff;
+    color: darkblue;
+    margin: 5px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: solid black 1px;
+    text-align: center;
+  }
+  th, td {
+    padding: 5px;
+    border-bottom: 1px solid black;
+  }
+ .dis{
+display: none;
+  }
+  div.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 3px solid black;
+  }
+.sticky {
+    position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+  }
+.container{
+    position: relative;
+}
+.txtContainer{
+    position: absolute;
+    font-size: xx-large;
+    top: 50px;
+    left: 600px;
+}
+.backImg{
+    opacity: 0.5;
+    height: 400px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.container {
+    position: relative;
+  }
+  
+  .black-box {
+    position: relative;
+    z-index: 1;
+    border: 2px solid black;
+    height: 100px;
+    margin: 30px;
+  }
+  
+  .gray-box {
+    position: absolute;
+    z-index: 2;
+    background: lightgray;
+    height: 60px;
+    width: 70%;
+    left: 50px;
+    top: 50px;
+  }
+  
+  .green-box {
+    position: absolute;
+    z-index: 3;
+    background: lightgreen;
+    width: 35%;
+    left: 270px;
+    top: -15px;
+    height: 100px;
+  }
+
+
+  .div1{
+    float: left;
+    padding: 20px;
+    background-color: #ff9999;
+  }
+  .div2{
+    float: left;
+    padding: 20px;
+    background-color: rgb(247, 200, 144);
+  }
+  .div3{
+    float: left;
+    padding: 20px;
+    background-color:#9ab7d6;
+  }
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .para {
+    display: none;
+    background-color: yellow;
+    padding: 20px;
+  }
+  
+  .des:hover p {
+    display: block;
+  }
