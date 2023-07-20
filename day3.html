@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Demo3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="day3.css">
+    </head>
+<body>
+
+<div class="topic">
+<h1>Pseudo Elements</h1>
+<p>
+    Here pseudo element First letter and selection along with selector is implemented<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, commodi quia? Pariatur delectus id earum quis est nesciunt, eaque similique quod incidunt, rem eum inventore dicta excepturi rerum aliquid ducimus.
+</p>
+</div>
+
+<div class="topic">
+<h1>Attribute Selectors</h1>
+<h2>[Attribute] Selector</h2>
+Here link is color baseon if it's target is <br>
+<a href="#" target="_blank">Target is set</a><br>
+<a href="#" >No target</a>
+<h2>[attribute="value"] Selector</h2>
+<p title="SetTitle">Value of title for this paragraph is SetTitle and that's why it is italic but next paragraph is not. </p>
+<p>This is not Italic</p>
+</div>
+
+<div class="topic">
+<h1>Units</h1>
+<h2>Relative Lengths</h2>
+<span style="font-size: 2em;">2em</span><br>
+<span style="font-size: 2rem;">2rem</span><br>
+<span style="font-size: 2ex;">2ex</span><br>
+<span style="font-size: 2ch;">2ch</span><br>
+<span style="font-size: 2vw;">2vw</span><br>
+<span style="font-size: 2vh;">2vh</span><br>
+<span style="font-size: 2vmax;">2vmax</span><br>
+<span style="font-size: 2vmin;">2vmin</span><br>
+<span style="font-size: 2%;">2%</span><br>
+<h2>Absolute Lengths</h2>
+<span style="font-size: 2cm;">2cm</span><br>
+<span style="font-size: 2mm;">2mm</span><br>
+<span style="font-size: 2in;">2in</span><br>
+<span style="font-size: 2px;">2px</span><br>
+<span style="font-size: 2pt;">2pt</span><br>
+<span style="font-size: 2pc;">2pc</span><br>
+</div>
+
+<div class="topic">
+<h1>Flex Box</h1>
+<div class="flexContainer">
+    <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis adipisci totam porro ratione corrupti
+         rem dicta, illo nihil autem vel a mollitia libero, commodi quasi atque asperiores saepe sapiente est!
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis adipisci totam porro ratione corrupti
+         rem dicta, illo nihil autem vel a mollitia libero, commodi quasi atque asperiores saepe sapiente est!
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis adipisci totam porro ratione corrupti
+         rem dicta, illo nihil autem vel a mollitia libero, commodi quasi atque asperiores saepe sapiente est!
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis adipisci totam porro ratione corrupti
+         rem dicta, illo nihil autem vel a mollitia libero, commodi quasi atque asperiores saepe sapiente est!
+    </div> 
+    <div>
+        <img src="images.jpg" alt="flower" style="height: 170px;width: 300px;">
+    </div>
+    
+</div>
+</div>
+
+<div class="topic">
+    <h1>CSS Variables</h1>
+<p class="var">
+    This div have background-color saved in variable of color. Color Variable over rides global variable color
+     whose value is light blue. Next para uses global variable color.
+</p>
+<p class="var2">
+    Value of background color is light blue.
+</p>
+<h2>Accessing CSS variables using JS</h2>
+<button onclick=getVar()>Access CSS Variables</button><button onclick=setVar()>Change Global Variable --color</button>
+</div>
+
+<div class="topic">
+    <h1>CSS Grid Layout</h1>
+    <div class="grid-container">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>  
+        <div class="item4">4</div>
+        <div class="item5">5</div>
+        <div class="item6">6</div>
+        <div class="item7">7</div>
+        <div class="item8">8</div>  
+      </div>
+</div>
+
+
+<script>
+    function getVar() {
+        r = document.querySelector(':root');
+        var r=getComputedStyle(r);
+        alert("Value of variable --color is : "+r.getPropertyValue('--color'));
+    }
+    function setVar() {
+        r = document.querySelector(':root');
+        r.style.setProperty('--color','lightgrey');
+    }
+</script>
+
+</body>
+</html>
