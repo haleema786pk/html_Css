@@ -198,7 +198,7 @@
 
 <div class="s5">
 
-    <button class="leftBtn"><</button>
+    <button class="leftBtn" onclick=left()><</button>
     <div class="section5">
         <h1>Testimonials</h1>
         <p>‘’Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam. Mauris accumsan felis fermentum euismod egestas. Mauris ante augue, cursus sit amet arcu a, maximus suscipit nibh. Integer vel nibh tellus. Pellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. Pellentesque ma’’
@@ -207,7 +207,6 @@
         <h1>Michelle Anna </h1>
         <h2>CEO, Co-Founder, XYZ Inc.</h2>
         <div class="slider">
-            <div class="circle"></div>
             <div class="circle" style="background-color: #385D50;"></div>
             <div class="circle"></div>
             <div class="circle"></div>
@@ -215,10 +214,94 @@
             <div class="circle"></div>
             <div class="circle"></div>
             <div class="circle"></div>
+            <div class="circle"></div>
         </div>
-        </div>
-        <button class="rightBtn">></button>
+    </div>
+        <button class="rightBtn" onclick=right()>></button>
 </div>
+
+<script>
+    let n=0;
+    const test=[
+        {in1:"‘’Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam. Mauris accumsan felis fermentum euismod egestas. Mauris ante augue, cursus sit amet arcu a, maximus suscipit nibh. Integer vel nibh tellus. Pellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. Pellentesque ma’’"
+    , src:'person.jpg',
+        in2:'Michelle Anna', in3:'CEO, Co-Founder, XYZ Inc.'},
+        {in1:"‘’Second Testimonial. honcus laoreet quam. Mauris accumsan felis ferPellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non honcus laoreet quam. Mauris accumsan felis ferPellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. Pellentesque ma’’"
+    , src:'picture1.jpg',
+        in2:'Anna Hathaway', in3:'Manager, ASD Inc.'},
+        {in1:"Thid Testimonial non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. honcus laoreet quam. Mauris accumsan felis ferPellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non Pellentesque ma’’"
+    , src:'picture2.jpg',
+        in2:'BOB', in3:'Director, WER Company'},
+        {in1:"Fourth Testimonial non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. honcus laoreet quam. Mauris accumsan felis ferPellente Pellentesque ma’’"
+    , src:'picture3.jpg',
+        in2:'Mark', in3:'Manager, ASD Inc.'},
+        {in1:"Fifth Testimonial non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. honcus laoreet quam. Mauris accumsan felis ferPellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non Pellentesque ma’’"
+    , src:'picture4.jpg',
+        in2:'Linda', in3:'CEO, Co-Founder, XYZ Inc.'},
+        {in1:"Sixth Testimonial non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. Pellentesque ma’’"
+    , src:'picture5.jpg',
+        in2:'Jack', in3:'CEO, Co-Founder, The Company'},
+        {in1:"‘’Seventh Testimonial. Pellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. Pellentesque ma’’"
+    , src:'picture1.jpg',
+        in2:'Hathaway', in3:'Manager, ASD Inc.'},
+        {in1:"‘’Eighth Testimonial. Pellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. honcus laoreet quam. Mauris accumsan felis ferPellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non Pellentesque ma’’"
+    , src:'picture6.jpg',
+        in2:'Joe', in3:'Manager, The Company'}
+    ];
+    function right()
+    {
+        n=(n+1)%8;
+        console.log("----------------------------------");
+
+        const x=document.getElementsByClassName("section5");
+        x.item(0).children[1].innerHTML=test[n].in1;
+        x.item(0).children[2].src=test[n].src;
+        x.item(0).children[3].innerHTML=test[n].in2;
+        x.item(0).children[4].innerHTML=test[n].in3;
+        if(n>0)
+        {
+        x.item(0).children[5].children[n-1].style.backgroundColor='';
+        x.item(0).children[5].children[n].style.backgroundColor='#385D50';
+        }
+        else if(n==0)
+        { 
+        x.item(0).children[5].children[7].style.backgroundColor='';
+        x.item(0).children[5].children[n].style.backgroundColor='#385D50';
+        }
+    }
+    function left()
+    {
+        if(n==0)
+        {
+            n=7;
+        }
+        else{
+            n-=1;
+        }
+        console.log("N : ",n);
+
+        const x=document.getElementsByClassName("section5");
+        console.log(n);
+        x.item(0).children[1].innerHTML=test[n].in1;
+        x.item(0).children[2].src=test[n].src;
+        x.item(0).children[3].innerHTML=test[n].in2;
+        x.item(0).children[4].innerHTML=test[n].in3;
+        if(n==7)
+        { 
+        x.item(0).children[5].children[0].style.backgroundColor='';
+        x.item(0).children[5].children[n].style.backgroundColor='#385D50';
+        }
+        else
+        {
+        x.item(0).children[5].children[n+1].style.backgroundColor='';
+        x.item(0).children[5].children[n].style.backgroundColor='#385D50';
+        }
+        
+    }
+</script>
+
+
+
 <div style="width: 90%; margin: auto;">
     <h1>Recent Blogs</h1>
 </div>
@@ -328,7 +411,6 @@
         </div>              
         <pre style="text-align: right;color: #6A6A6A;font-style: normal;">Terms & Conditions      Privacy Policy </pre>
     </div>
-    
 
 </div>
 
