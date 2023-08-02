@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To Do</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+ <style>
+    .navbar{
+    background-color: white;
+    margin: 2%;
+}
+.done{
+    background-color: rgb(142, 207, 142);
+}
+.notDone{
+    background-color: rgb(194, 63, 63);
+}
+ </style>
+        </head>
+<body>
+  
+  <!--ADD Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="text" name="txt" id="txt" placeholder="Enter Description" style="width: 100%;padding: 2%;margin-bottom: 2%;">
+            <label for="date">Due Date</label>
+            <input type="date" name="date" id="date">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick=add()>Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<h1 style="text-align: center;padding: 5%;background-color: rgb(190, 228, 230); font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">To Do</h1>
+    <!-- Button trigger modal -->
+<div class="navbar">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add
+      </button>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Show
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#" onclick=table()>All</a></li>
+          <li><a class="dropdown-item" href="#" onclick=done()>Done</a></li>
+          <li><a class="dropdown-item" href="#" onclick=notDone()>Not Done</a></li>
+        </ul>
+      </div>
+      <table class="table" >
+        <thead>
+          <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Description</th>
+            <th scope="col">Due date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="info">
+
+        </tbody>
+      </table>
+</div>
+  
+
+
+<script>
+    table();
+
+    function add() {
+        let x=document.getElementsByClassName("modal-body");
+        let data={desc:x.item(0).children[0].value, date:x.item(0).children[2].value,sta:false};
+        let d=localStorage.getItem('1');
+        d=JSON.parse(d);
+        console.log(d);
+        d.push(data);
+        localStorage.setItem('1',JSON.stringify(d));
+        x.item(0).children[0].value="";
+        x.item(0).children[2].value="";
+        table();
+    }
+    function table()
+    {
+        let n=0;
+        let info="";
+        let d=localStorage.getItem('1');
+        d=JSON.parse(d);
+        d.forEach(element => {
+            let st="";
+            if(element.sta==true)
+            {
+                st='<tr><td scope="row" class="table-success">Done</td>';
+            }
+            else{
+                st=`<tr><td><button id='${n}' type="button" class="btn btn-outline-danger" onclick=toggle(id)>Pending</button></td>`;;
+            }
+            info+=st+`
+             <td>${element.desc}</td>
+             <td>${element.date}</td>
+             <td><button type="button" class="btn btn-danger" id='${n}' onclick=deletion(id)>Delete</button>
+              <button type="button" class="btn btn-outline-info"  id='${n}' onclick=up(id)>Up</button>
+              <button type="button" class="btn btn-outline-info"  id='${n}' onclick=down(id)>Down</button>
+              </td>`;
+             n+=1;
+        });
+        document.getElementById("info").innerHTML=info;
+        
+    }
+    function toggle(id)
+    {
+      let a=document.getElementById(id).parentElement.parentElement.children[1].textContent;
+       let b=document.getElementById(id).parentElement.parentElement.children[2].textContent;
+       let c=document.getElementById(id).parentElement.parentElement.children[0].textContent;
+       if(c=='Pending')
+       {
+        c=false;
+       }
+       else{
+        c=true;
+       }
+       let x={desc:a, date:b, sta:c};
+       let d=localStorage.getItem('1');
+        d=JSON.parse(d);
+        let i=d.findIndex(find);
+        function find(element)
+        {
+          return (element.desc==x.desc && element.date==x.date && element.sta==x.sta);
+        }
+        d[i].sta=true;
+        localStorage.setItem('1',JSON.stringify(d));
+        table();
+        alert("Status Updated to Done");
+    }
+
+    function up(id)
+    {
+      console.log(id);
+      let a=document.getElementById(id).parentElement.parentElement.children[1].textContent;
+       let b=document.getElementById(id).parentElement.parentElement.children[2].textContent;
+       let c=document.getElementById(id).parentElement.parentElement.children[0].textContent;
+       if(c=='Pending')
+       {
+        c=false;
+       }
+       else{
+        c=true;
+       }
+       let x={desc:a, date:b, sta:c};
+       let d=localStorage.getItem('1');
+        d=JSON.parse(d);
+        let i=d.findIndex(find);
+        function find(element)
+        {
+          return (element.desc==x.desc && element.date==x.date && element.sta==x.sta);
+        }
+        if(i==0 || i==-1)
+        {
+          return;
+        }
+        console.log("UP");
+        let temp=d[i-1];
+        d[i-1]=d[i];
+        d[i]=temp;
+        localStorage.setItem('1',JSON.stringify(d));
+        table();
+        
+
+    }
+    function down(id)
+    {
+      console.log(id);
+      let a=document.getElementById(id).parentElement.parentElement.children[1].textContent;
+       let b=document.getElementById(id).parentElement.parentElement.children[2].textContent;
+       let c=document.getElementById(id).parentElement.parentElement.children[0].textContent;
+       if(c=='Pending')
+       {
+        c=false;
+       }
+       else{
+        c=true;
+       }
+       let x={desc:a, date:b, sta:c};
+       let d=localStorage.getItem('1');
+        d=JSON.parse(d);
+        let i=d.findIndex(find);
+        function find(element)
+        {
+          return (element.desc==x.desc && element.date==x.date && element.sta==x.sta);
+        }
+        if(i==d.length-1 || i==-1)
+        {
+          return;
+        }
+        console.log("Down");
+        let temp=d[i+1];
+        d[i+1]=d[i];
+        d[i]=temp;
+        localStorage.setItem('1',JSON.stringify(d));
+        table();
+        
+    }
+    function done()
+    {
+        let n=1;
+        let info="";
+        console.log("Records in local storage : ");
+        let d=localStorage.getItem('1');
+        d=JSON.parse(d);
+        d.forEach(element => {
+            if(element.sta==true)
+            {
+            let st="";
+            if(element.sta==true)
+            {
+                st='<tr><td  class="table-success">Done</td>';
+            }
+            else{
+                st=`<tr><td><button id='${n}' type="button" class="btn btn-outline-danger" onclick=toggle(id)>Pending</button></td>`;
+            }
+            info+=st+`
+             <td>${element.desc}</td>
+             <td>${element.date}</td>
+             <td><button type="button" class="btn btn-danger" id='${n}' onclick=deletion(id)>Delete</button>
+              <button type="button" class="btn btn-outline-info"  id='${n}' onclick=up(id)>Up</button>
+              <button type="button" class="btn btn-outline-info"  id='${n}' onclick=down(id)>Down</button>
+              </td>`;
+             n+=1
+        }
+        });
+        document.getElementById("info").innerHTML=info;
+    }
+    function notDone()
+    {
+        let n=1;
+        let info="";
+        let d=localStorage.getItem('1');
+        d=JSON.parse(d);
+        d.forEach(element => {
+            if(element.sta==false)
+            {
+            console.log(element.desc);
+            console.log(element.date);
+            console.log("-----_-_-_")
+            ;
+            let st="";
+            if(element.sta==true)
+            {
+                st='<tr><td scope="row" class="done">Done</td>';
+            }
+            else{
+                st=`<tr><td><button id='${n}' type="button" class="btn btn-outline-danger" onclick=toggle(id)>Pending</button></td>`;
+            }
+            info+=st+`
+             <td>${element.desc}</td>
+             <td>${element.date}</td>
+             <td><button type="button" class="btn btn-danger" id='${n}' onclick=deletion(id)>Delete</button>
+              <button type="button" class="btn btn-outline-info"  id='${n}' onclick=up(id)>Up</button>
+              <button type="button" class="btn btn-outline-info"  id='${n}' onclick=down(id)>Down</button>
+              </td>`;
+             n+=1
+        }
+        });
+        document.getElementById("info").innerHTML=info;
+    }
+    function deletion(id)
+    {
+       let a=document.getElementById(id).parentElement.parentElement.children[1].textContent;
+       let b=document.getElementById(id).parentElement.parentElement.children[2].textContent;
+       let c=document.getElementById(id).parentElement.parentElement.children[0].textContent;
+       if(c=='Pending')
+       {
+        c=false;
+       }
+       else{
+        c=true;
+       }
+       let x={desc:a, date:b, sta:c};
+       let d=localStorage.getItem('1');
+        d=JSON.parse(d);
+        let i=d.findIndex(find);
+        function find(element)
+        {
+          return (element.desc==x.desc && element.date==x.date && element.sta==x.sta);
+        }
+        console.log("Index of : ",i);
+        d=d.filter(index);
+        function index(element,index,arr)
+        {
+          return index!=i;
+        }
+        console.log(d);
+        localStorage.setItem('1',JSON.stringify(d));
+        table();
+
+    }
+
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  
+  
+</body>
+</html>
